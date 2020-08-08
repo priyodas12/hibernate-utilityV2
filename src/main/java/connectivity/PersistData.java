@@ -13,7 +13,11 @@ public class PersistData {
             //begin a transaction
             session.beginTransaction();
 
-            //
+            //save data in session
+            session.save(e);
+
+            //commit data
+            session.getTransaction().commit();
 
 
             //shutdown
