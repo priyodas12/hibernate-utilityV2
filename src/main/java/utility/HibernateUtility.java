@@ -1,5 +1,6 @@
 package utility;
 
+import entity.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -43,11 +44,11 @@ public class HibernateUtility {
                 //password
                 mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
                 //dialect will be creating database specific query
-                mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQLDialect");
+                mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQL5Dialect");
                 //each trigger will create new table with same name
-                mysqlDbSettingsInfo.put(Environment.HBM2DDL_AUTO,"CREATE");
+                mysqlDbSettingsInfo.put(Environment.HBM2DDL_AUTO,"create");
 
-                //format
+                //show hibernate generated SQL in correct format
                 mysqlDbSettingsInfo.put(Environment.SHOW_SQL,"TRUE");
                 mysqlDbSettingsInfo.put(Environment.FORMAT_SQL,"TRUE");
 
@@ -59,8 +60,8 @@ public class HibernateUtility {
                 //create registry
                 standardServiceRegistry=standardServiceRegistryBuilder.build();
 
-                //Create MetadataSources
-                MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
+                //Create MetadataSources and add entity class;
+                MetadataSources metadataSources = new MetadataSources(standardServiceRegistry).addAnnotatedClass(Employee.class);
 
                 //Create Metadata
                 Metadata metadata = metadataSources.getMetadataBuilder().build();
