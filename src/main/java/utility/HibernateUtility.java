@@ -46,7 +46,7 @@ public class HibernateUtility {
                 //dialect will be creating database specific query
                 mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQL5Dialect");
                 //each trigger will create new table with same name
-                mysqlDbSettingsInfo.put(Environment.HBM2DDL_AUTO,"create");
+                mysqlDbSettingsInfo.put(Environment.HBM2DDL_AUTO,"update");
 
                 //show hibernate generated SQL in correct format
                 mysqlDbSettingsInfo.put(Environment.SHOW_SQL,"TRUE");

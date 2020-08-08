@@ -2,16 +2,30 @@ package connectivity;
 
 import entity.Employee;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TestEmployeeData {
-    public static Employee getTestEmployee() {
-        Employee e = new Employee();
+    public static List<Employee> getTestEmployee() {
 
-        e.setDoj(new Date());
-        e.setEmpName("Priyobrato.Das");
-        e.setSalary(55000.90);
+        List<Employee> listOfEmp=new ArrayList<>();
 
-        return e;
+        Employee e1 = new Employee();
+
+        e1.setDoj(new Date());
+        e1.setEmpName("Priyobrato.Das");
+        e1.setSalary(55000.90);
+
+        Employee e2 = new Employee();
+
+        e2.setDoj(new Date());
+        e2.setEmpName("Debabrato.Das");
+        e2.setSalary(90000.90);
+
+        listOfEmp.add(e1);
+        listOfEmp.add(e2);
+
+        return listOfEmp;
     }
 }
