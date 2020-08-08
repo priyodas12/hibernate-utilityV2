@@ -9,6 +9,7 @@ public class TestDatabase {
             String SQL="SELECT VERSION()";
             String vMySQL=(String)session.createNativeQuery(SQL).getSingleResult();
             System.out.println("Current SQL version::"+vMySQL);
+            HibernateUtility.shutdown();
         }catch (Exception e){
             e.printStackTrace();
         }

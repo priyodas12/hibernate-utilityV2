@@ -14,26 +14,36 @@ public class HibernateUtility {
     static{
         if(sessionFactory == null) {
             try {
+                // Create registry
                 standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
+
+                //Create MetadataSources
                 MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
+
+                //Create Metadata
                 Metadata metadata = metadataSources.getMetadataBuilder().build();
+
+                //get session
                 sessionFactory = metadata.getSessionFactoryBuilder().build();
             } catch (Exception e) {
                 e.printStackTrace();
+                // terminate standardServiceRegistry instance for exception
                 if (standardServiceRegistry != null) {
                     StandardServiceRegistryBuilder.destroy(standardServiceRegistry);
                 }
             }
         }
     }
-
+    // single end point for getting session
     public static SessionFactory getSessionFactory(){
         return sessionFactory;
     }
-
+    // terminate standardServiceRegistry to close all Session factory instance.
     public static void shutdown() {
+        System.out.println("Shutting Down");
         if (standardServiceRegistry != null) {
             StandardServiceRegistryBuilder.destroy(standardServiceRegistry);
         }
+        sessionFactory.close();
     }
 }
