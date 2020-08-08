@@ -5,11 +5,18 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Environment;
+
+
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 * ServiceRegistry: The central service API, aside from the services themselves, is the org.hibernate.service.ServiceRegistry interface. The main purpose of a service registry is to hold, manage and provide access to services.
 * MetadataSources: Entry point into working with sources of metadata information (mapping XML, annotations). Tell Hibernate about sources and then call buildMetadata(), or use getMetadataBuilder() to customize how sources are processed (naming strategies, etc).
 *
+*
+* we are not deleting hibernate.cfg.xml for future ref;
 */
 
 public class HibernateUtility {
@@ -20,8 +27,24 @@ public class HibernateUtility {
     static{
         if(sessionFactory == null) {
             try {
-                // Create registry
-                standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
+                // Create registry with hibernate.cfg.xml,configure() will load default settings
+                //standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
+
+                StandardServiceRegistryBuilder standardServiceRegistryBuilder=new StandardServiceRegistryBuilder();
+
+                //hibernate connectivity data counter part of hibernate.cfg.xml;
+                Map<String ,String> mysqlDbSettingsInfo=new HashMap<>();
+                mysqlDbSettingsInfo.put(Environment.DRIVER,"com.mysql.cj.jdbc.Driver");
+                mysqlDbSettingsInfo.put(Environment.URL,"jdbc:mysql://localhost:3306/hibernate_db");
+                mysqlDbSettingsInfo.put(Environment.USER,"root");
+                mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
+                mysqlDbSettingsInfo.put(Environment.URL,"org.hibernate.dialect.MySQLDialect");
+
+                //apply mysql database setting
+                standardServiceRegistryBuilder.applySettings(mysqlDbSettingsInfo);
+
+                //create registry
+                standardServiceRegistry=standardServiceRegistryBuilder.build();
 
                 //Create MetadataSources
                 MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
