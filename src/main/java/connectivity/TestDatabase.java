@@ -11,6 +11,7 @@ public class TestDatabase {
             //execute result
             String vMySQL=(String)session.createNativeQuery(SQL).getSingleResult();
             System.out.println("Current SQL version::"+vMySQL);
+            System.out.println("info::"+session.getStatistics());
             //shutdown
             HibernateUtility.shutdown();
         }catch (Exception e){

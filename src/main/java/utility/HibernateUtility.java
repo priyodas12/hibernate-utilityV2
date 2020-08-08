@@ -38,7 +38,7 @@ public class HibernateUtility {
                 mysqlDbSettingsInfo.put(Environment.URL,"jdbc:mysql://localhost:3306/hibernate_db");
                 mysqlDbSettingsInfo.put(Environment.USER,"root");
                 mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
-                mysqlDbSettingsInfo.put(Environment.URL,"org.hibernate.dialect.MySQLDialect");
+                mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQLDialect");
 
                 //apply mysql database setting
                 standardServiceRegistryBuilder.applySettings(mysqlDbSettingsInfo);
