@@ -44,6 +44,8 @@ public class HibernateUtility {
                 mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
                 //dialect will be creating database specific query
                 mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQLDialect");
+                //each trigger will create table
+                mysqlDbSettingsInfo.put(Environment.HBM2DDL_AUTO,"CREATE");
 
                 //apply mysql database setting
                 standardServiceRegistryBuilder.applySettings(mysqlDbSettingsInfo);

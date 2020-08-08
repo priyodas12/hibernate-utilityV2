@@ -19,7 +19,6 @@ public class PersistData {
             //commit data
             session.getTransaction().commit();
 
-
             //shutdown
             HibernateUtility.shutdown();
         }catch (Exception e){
