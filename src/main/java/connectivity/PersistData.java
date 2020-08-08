@@ -13,11 +13,17 @@ public class PersistData {
             //begin a transaction
             session.beginTransaction();
 
-            //save data in session
-            session.save(e);
+            //save data in session,returns primary key
+            Integer pk= (Integer) session.save(e);
+
+            //persist method return type is void;
+            //session.persist(e);
 
             //commit data
             session.getTransaction().commit();
+
+
+            System.out.println("employee with id "+pk+" saved");
 
             //shutdown
             HibernateUtility.shutdown();
