@@ -34,10 +34,15 @@ public class HibernateUtility {
 
                 //hibernate connectivity data counter part of hibernate.cfg.xml;
                 Map<String ,String> mysqlDbSettingsInfo=new HashMap<>();
+                //mysql driver info
                 mysqlDbSettingsInfo.put(Environment.DRIVER,"com.mysql.cj.jdbc.Driver");
+                //pointing database url
                 mysqlDbSettingsInfo.put(Environment.URL,"jdbc:mysql://localhost:3306/hibernate_db");
+                //username
                 mysqlDbSettingsInfo.put(Environment.USER,"root");
+                //password
                 mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
+                //dialect will be creating database specific query
                 mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQLDialect");
 
                 //apply mysql database setting
