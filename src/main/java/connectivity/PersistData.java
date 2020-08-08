@@ -3,6 +3,14 @@ package connectivity;
 import entity.Employee;
 import org.hibernate.Session;
 import utility.HibernateUtility;
+/*
+Session#save() → This method is used save an entity/object into database and return a generated identifier. It will throw an exception if an entity already exists in the database.
+
+Session#persist() → This method is used save an entity/object into database and return a void. It will throw an exception if an entity already exists in the database.
+
+Session#saveOrUpdate() → This method is used to either save or update an entity in the database.
+
+*/
 
 public class PersistData {
     public static void main(String[] args) {
