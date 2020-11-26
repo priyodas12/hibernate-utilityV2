@@ -42,7 +42,7 @@ public class HibernateUtility {
                 //username
                 mysqlDbSettingsInfo.put(Environment.USER,"root");
                 //password
-                mysqlDbSettingsInfo.put(Environment.PASS,"Priyo123");
+                mysqlDbSettingsInfo.put(Environment.PASS,"Priyoxxxx");
                 //dialect will be creating database specific query
                 mysqlDbSettingsInfo.put(Environment.DIALECT,"org.hibernate.dialect.MySQL5Dialect");
                 //each trigger will create new table with same name
